@@ -1,0 +1,15 @@
+spring:
+  datasource:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://us-cdbr-east-05.cleardb.net:3306/heroku_c6f0d2242877dd2
+#    username: b9dac333f2c048
+#    password: faf18f50
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/COST_ANALYZER_PERSONAL
+      username: root
+      password: root
+
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
