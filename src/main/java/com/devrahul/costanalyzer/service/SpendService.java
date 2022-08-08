@@ -22,9 +22,8 @@ public class SpendService {
 
     public List<Object> addSpending(String token, SpendAddDto newSpend) throws RollbackException {
         List<Object> result = new ArrayList<>();
-        String userId = "dummyUser";//Security.getUserIdFromJwtToken(token);
+        String userId = Security.getUserIdFromJwtToken(token);
         if(userId!=null){
-
             try{
             UserSpendsEntity userSpendsEntity = new UserSpendsEntity();
             userSpendsEntity.setSpendCategory(newSpend.getSpendCategory());

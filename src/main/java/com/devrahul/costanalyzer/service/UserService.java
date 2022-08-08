@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class UserService {
     @Autowired
-    private UserDao userRepository;
+     UserDao userRepository;
 
     public List<Object> registerUser(UserSignup userSignup) {
         List<Object> regResult = new ArrayList<>();
@@ -56,24 +56,24 @@ public class UserService {
 
     public List<Object> authUser(LoginUserDTO loginUserDTO) {
         List<Object> regResult = new ArrayList<Object>();
-        if (  DataValidation.emailValidation(loginUserDTO.getEmail()) && DataValidation.passwordValidation(loginUserDTO.getPassword())) {
+        if (   DataValidation.passwordValidation(loginUserDTO.getPassword())) {
             try {
-               if(!loginUserDTO.getEmail().contains("@") && userRepository.existsById(loginUserDTO.getEmail())){
+               if(!loginUserDTO.getEmail().contains("@") && DataValidation.userNameValidation(loginUserDTO.getEmail()) && userRepository.existsById(loginUserDTO.getEmail())){
                    UserEntity userById = userRepository.findById(loginUserDTO.getEmail()).get();
                    boolean passwordVerify = Security.passwordMatcher(loginUserDTO.getPassword(), userById.getPassword());
                    if (passwordVerify) {
-                       String authToken = Security.jwtTokenGenerator(userById.getEmailId());
+                       String authToken = Security.jwtTokenGenerator(userById.getUserId());
                        regResult.add(1);
                        regResult.add(authToken);
                        return regResult;
                    }
                }
-               else if(loginUserDTO.getEmail().contains("@")){
+               else if(loginUserDTO.getEmail().contains("@") && DataValidation.emailValidation(loginUserDTO.getEmail()) ){
                    UserEntity user = userRepository.findByEmail(loginUserDTO.getEmail());
                    if(user!=null){
                        boolean passwordVerify = Security.passwordMatcher(loginUserDTO.getPassword(), user.getPassword());
                        if (passwordVerify) {
-                           String authToken = Security.jwtTokenGenerator(user.getEmailId());
+                           String authToken = Security.jwtTokenGenerator(user.getUserId());
                            regResult.add(1);
                            regResult.add(authToken);
                            return regResult;
