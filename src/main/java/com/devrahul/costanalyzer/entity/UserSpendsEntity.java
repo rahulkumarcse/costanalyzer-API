@@ -3,6 +3,7 @@ package com.devrahul.costanalyzer.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,10 +13,10 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name = "USER_SPENDS")
-public class UserSpends{
+public class UserSpendsEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name ="SPEND_ID")
+    @GeneratedValue(generator = "uuid") //to generate string
+    @GenericGenerator(name = "uuid", strategy = "uuid2")    @Column(name ="SPEND_ID")
     private  String spendId;
 
     @Column(name = "SPENDING_DATE")

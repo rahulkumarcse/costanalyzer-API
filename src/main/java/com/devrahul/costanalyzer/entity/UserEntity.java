@@ -14,7 +14,7 @@ import java.util.Date;
 @Setter
 @Entity
 @Table(name="USERS")
-public class User {
+public class UserEntity {
     @Id
     @Column(name="USER_ID",unique = true,nullable = false)
     private  String userId;
