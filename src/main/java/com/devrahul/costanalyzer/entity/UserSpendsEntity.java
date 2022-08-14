@@ -16,7 +16,8 @@ import java.util.Date;
 public class UserSpendsEntity {
     @Id
     @GeneratedValue(generator = "uuid") //to generate string
-    @GenericGenerator(name = "uuid", strategy = "uuid2")    @Column(name ="SPEND_ID")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @Column(name ="SPEND_ID")
     private  String spendId;
 
     @Column(name = "SPENDING_DATE")

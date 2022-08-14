@@ -24,4 +24,30 @@ public class SpendsController {
         else return new ResponseEntity<>(regResult.get(1),HttpStatus.BAD_REQUEST);
     }
 
+    @PostMapping(value = "/modifySpend/{spendId}")
+    private ResponseEntity<?> modifySpends(@RequestHeader String token ,@PathVariable String spendId, @RequestBody SpendAddDto newSpend){
+        List<Object> regResult = spendService.modifySpend(token,spendId,newSpend);
+        if(regResult.get(0).toString() .equals("1")){
+            return new ResponseEntity<>(regResult.get(1), HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(regResult.get(1),HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/viewSpend")
+    private  ResponseEntity<?> viewSpends(@RequestHeader String token){
+        List<Object> regResult = spendService.viewSpend(token);
+        if(regResult.get(0).toString() .equals("1")){
+            return new ResponseEntity<>(regResult.get(1), HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(regResult.get(1),HttpStatus.BAD_REQUEST);
+    }
+
+    @DeleteMapping("/removeSpend/{spendId}")
+    private  ResponseEntity<?> removeSpend(@RequestHeader String token,@PathVariable String spendId){
+        List<Object> regResult = spendService.removeSpend(token,spendId);
+        if(regResult.get(0).toString() .equals("1")){
+            return new ResponseEntity<>(regResult.get(1), HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(regResult.get(1),HttpStatus.BAD_REQUEST);
+    }
 }
