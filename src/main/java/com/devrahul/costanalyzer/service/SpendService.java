@@ -7,9 +7,7 @@ import com.devrahul.costanalyzer.util.Security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.PersistenceContext;
 import javax.persistence.RollbackException;
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +15,7 @@ import java.util.List;
 @Service
 public class SpendService {
     @Autowired
-    SpendDao spendDao;
+    public SpendDao spendDao;
 
 
     public List<Object> addSpending(String token, SpendAddDto newSpend) throws RollbackException {

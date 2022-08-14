@@ -13,3 +13,7 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
+
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false

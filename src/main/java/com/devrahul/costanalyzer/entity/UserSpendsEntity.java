@@ -43,4 +43,16 @@ public class UserSpendsEntity {
 
     @Column(name="MISCELLANEOUS_SPEND")
     private  String miscellaneousSpend;
+
+    public UserSpendsEntity(String spendId, Date spendingDate, Date entryDate, String userId, double spentAmount, String spendType, String spendName, String spendCategory, String miscellaneousSpend) {
+        this.spendId = spendId;
+        this.spendingDate = spendingDate;
+        this.entryDate = entryDate;
+        this.userId = userId;
+        this.spentAmount = spentAmount;
+        this.spendType = spendType;
+        this.spendName = spendName;
+        this.spendCategory = spendCategory;
+        this.miscellaneousSpend = miscellaneousSpend;
+    }
 }
